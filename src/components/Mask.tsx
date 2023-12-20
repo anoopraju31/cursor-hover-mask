@@ -7,10 +7,12 @@ import {
 } from '@/app/utils/animations'
 import { motion } from 'framer-motion'
 import styles from './mask.module.css'
+import useAppSelector from '@/app/hooks/useAppSelector'
 
 const Mask = ({ children }: { children: React.ReactNode }) => {
 	const { x, y, containerRef } = useMousePosition()
-	const size = 300
+	const isHovered = useAppSelector((state) => state.textHover.isHovered)
+	const size = isHovered ? 300 : 30
 	return (
 		<motion.div
 			ref={containerRef}
