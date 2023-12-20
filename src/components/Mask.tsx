@@ -12,7 +12,7 @@ import useAppSelector from '@/app/hooks/useAppSelector'
 const Mask = ({ children }: { children: React.ReactNode }) => {
 	const { x, y, containerRef } = useMousePosition()
 	const isHovered = useAppSelector((state) => state.textHover.isHovered)
-	const size = isHovered ? 300 : 30
+	const size = isHovered ? 400 : 40
 	return (
 		<motion.div
 			ref={containerRef}

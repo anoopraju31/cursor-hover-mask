@@ -1,5 +1,5 @@
 .mask {
-	@apply text-[black] absolute left-0 top-0 w-full;
+	@apply text-[black] absolute left-0 top-0 w-full cursor-none;
 	mask-image: url('/mask.svg');
 	mask-repeat: no-repeat;
 	mask-size: 30px;

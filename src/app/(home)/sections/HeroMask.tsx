@@ -2,7 +2,6 @@
 
 import { mouseEnter, mouseLeave } from '@/app/features/textHoverSlice'
 import useAppDispatch from '@/app/hooks/useAddDispatch'
-import React from 'react'
 
 const HeroMask = () => {
 	const dispatch = useAppDispatch()
@@ -15,7 +14,7 @@ const HeroMask = () => {
 			<h1
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
-				className='text-7xl'>
+				className='text-7xl cursor-none'>
 				{' '}
 				Hero Mask Section{' '}
 			</h1>
