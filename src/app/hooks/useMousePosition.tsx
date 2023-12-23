@@ -19,10 +19,18 @@ const useMousePosition = () => {
 				y: e.pageY,
 			})
 		}
+		const handleScroll = () => {
+			setMousePosition({
+				x: -1000,
+				y: -1000,
+			})
+		}
 		document.addEventListener('mousemove', handleMousePosition)
+		document.addEventListener('scroll', handleScroll)
 
 		return () => {
 			document.removeEventListener('mousemove', handleMousePosition)
+			document.removeEventListener('scroll', handleScroll)
 		}
 	}, [])
 
