@@ -38,7 +38,7 @@ const MaskPage = () => {
 				<div className='max-w-[1400px] mx-auto'>
 					<div className='h-screen'></div>
 
-					<div className='relative'>
+					<div className='relative mdlg:flex mdlg:gap-4'>
 						{slides.map(({ id, color, img }) => {
 							const targetScale = 1 - (slides.length - id) * 0.05
 							return (
