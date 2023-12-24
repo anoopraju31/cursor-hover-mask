@@ -1,18 +1,20 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 
 const useWindowWidth = () => {
-	const [width, setWidth] = useState(0)
-	const [isDesktopSize, setIsDestopSize] = useState(false)
+	const isClient = typeof window === 'object'
+	const [width, setWidth] = useState(isClient ? window.innerWidth : 0)
+	const [isDesktopSize, setIsDestopSize] = useState(
+		isClient ? window.innerWidth >= 892 : false,
+	)
 
 	useEffect(() => {
-		setWidth(window.innerWidth)
-		setIsDestopSize(window.innerWidth >= 892)
-
 		const handleResize = () => {
 			setWidth(window.innerWidth)
 			setIsDestopSize(window.innerWidth >= 892)
 		}
+
 		window.addEventListener('resize', handleResize)
 
 		return () => window.removeEventListener('resize', handleResize)
