@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
 
 type MousePosition = {
@@ -7,8 +9,8 @@ type MousePosition = {
 
 const useMousePosition = () => {
 	const [mousePosition, setMousePosition] = useState<MousePosition>({
-		x: -1000,
-		y: -1000,
+		x: -400,
+		y: -400,
 	})
 	const containerRef = useRef<HTMLDivElement | null>(null)
 
@@ -21,10 +23,11 @@ const useMousePosition = () => {
 		}
 		const handleScroll = () => {
 			setMousePosition({
-				x: -1000,
-				y: -1000,
+				x: -400,
+				y: -400,
 			})
 		}
+
 		document.addEventListener('mousemove', handleMousePosition)
 		document.addEventListener('scroll', handleScroll)
 
