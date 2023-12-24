@@ -1,13 +1,15 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useScroll } from 'framer-motion'
 import Slide from './Slide'
 import Lenis from '@studio-freight/lenis'
+import SlideLg from './SlideLg'
 
 const MainPage = () => {
-	const container = useRef(null)
+	const container = useRef<HTMLElement | null>(null)
 	const { scrollYProgress } = useScroll({
+		layoutEffect: false,
 		target: container,
 		offset: ['start start', 'end end'],
 	})
@@ -32,11 +34,11 @@ const MainPage = () => {
 		{ id: 4, color: '#0f3', img: '/nike.png' },
 	]
 	return (
-		<main className='bg-orange-500'>
-			<div className='max-w-[1400px] mx-auto'>
+		<main ref={container} className='bg-orange-500'>
+			<div className='mdlg:px-4'>
 				<div className='h-screen'></div>
 
-				<div className='relative mdlg:h-full mdlg:flex mdlg:gap-4'>
+				<div className='relative mdlg:hidden'>
 					{slides.map(({ id, color, img }) => {
 						const targetScale = 1 - (slides.length - id) * 0.05
 						return (
@@ -50,6 +52,12 @@ const MainPage = () => {
 								targetScale={targetScale}
 							/>
 						)
+					})}
+				</div>
+
+				<div className='hidden mdlg:h-full mdlg:flex mdlg:gap-4'>
+					{slides.map(({ id, img }) => {
+						return <SlideLg key={id} id={id} img={img} />
 					})}
 				</div>
 

@@ -1,13 +1,14 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useScroll } from 'framer-motion'
 import Lenis from '@studio-freight/lenis'
 import Mask from '@/components/Mask'
 import SlideMask from './SlideMask'
+import SlideLgMask from './SlideLgMask'
 
 const MaskPage = () => {
-	const container = useRef(null)
+	const container = useRef<HTMLDivElement | null>(null)
 	const { scrollYProgress } = useScroll({
 		target: container,
 		offset: ['start start', 'end end'],
@@ -33,13 +34,13 @@ const MaskPage = () => {
 		{ id: 4, color: '#0f3', img: '/nike.png' },
 	]
 	return (
-		<div className='absolute top-0 left-0 right-0 w-full'>
+		<div ref={container} className='absolute top-0 left-0 right-0 w-full'>
 			<Mask>
-				<div className='max-w-[1400px] mx-auto'>
+				<div className='mdlg:px-4'>
 					<div className='h-screen'></div>
 
-					<div className='relative mdlg:flex mdlg:gap-4'>
-						{slides.map(({ id, color, img }) => {
+					<div className='relative mdlg:hidden'>
+						{slides.map(({ id }) => {
 							const targetScale = 1 - (slides.length - id) * 0.05
 							return (
 								<SlideMask
@@ -51,6 +52,12 @@ const MaskPage = () => {
 								/>
 							)
 						})}
+					</div>
+
+					<div className='relative hidden mdlg:flex mdlg:gap-4'>
+						{slides.map(({ id }) => (
+							<SlideLgMask key={id} id={id} />
+						))}
 					</div>
 
 					<div className='h-screen'></div>
